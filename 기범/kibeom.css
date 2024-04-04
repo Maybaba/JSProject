@@ -6,6 +6,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    text-align: center;
+    
   }
 
 
@@ -124,11 +126,11 @@ body {
 
 .third {
   top: 331px;
-  right: 293px;
+  right: 333px;
 }
 .fourth {
   top: 331px;
-  right: 176px;
+  right: 216px;
 }
 
 .box {
@@ -136,3 +138,57 @@ body {
   left: 10%;
 }
 
+#one {
+  top: 90px;
+  left: 130px;
+}
+#two {
+   top: 90px;
+  left: 208px;
+}
+#three {
+  top: 90px;
+  left: 366px;
+  
+}
+#four {
+  top: 90px;
+  left: 445px;
+}
+
+#five {
+  top: 90px;
+  left: 524px;
+}
+#six {
+  top: 170px;
+  left: 130px;
+}
+#seven {
+  top: 170px;
+  left: 208px;
+}
+#eight {
+  top: 170px;
+  left: 366px;
+}
+#nine {
+  top: 170px;
+  left: 445px;
+}
+#ten {
+  top: 170px;
+  left: 524px;
+}
+#eleven {
+  left: 130px;
+  top: 250px;
+}
+#twelve {
+  top: 250px;
+  left: 208px;
+}
+#thirteen {
+  top: 250px;
+  left: 286px;
+}
