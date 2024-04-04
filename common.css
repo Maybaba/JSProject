@@ -15,12 +15,13 @@ body {
   background: #B4B5FE;
   border: 1px solid #000;
   margin-top: 7%;
+
 }
 .game {
   width: 700px;
   height: 400px;
   margin: 100px auto;
-  background: yellow;
+  /* background: yellow; */
   border: 1px solid #000;
 }
 .box {
