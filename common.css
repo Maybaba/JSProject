@@ -4,8 +4,9 @@
 
 body {
   width: 1000px;
-  height: 800px;
-  background: gray;
+    height: 800px;
+    background: gray;
+    margin: 100px auto
 }
 .wrap {
   width: 850px;
@@ -17,8 +18,8 @@ body {
 }
 .game {
   width: 700px;
-  height: 600px;
-  margin: 0 auto;
+  height: 400px;
+  margin: 100px auto;
   background: yellow;
   border: 1px solid #000;
 }
