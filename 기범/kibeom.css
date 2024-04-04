@@ -51,20 +51,18 @@ body {
   border-radius: 50%;
   background: blue;
   border: 5px solid black;
-  z-index: 50;
+  z-index: 500;
   position: absolute;
 }
 .backgroundInGame1 {
-  width: 40px;
+  width: 5.8%;
   height: 40px;
-  background: #F7F7FF;
-  
-
+  background: #f7f7ff;
 }
 .backgroundInGame2 {
-  width: 40px;
+  width: 5.8%;
   height: 40px;
-  background:  #E6E6FF;
+  background: #e6e6ff;
 }
 
 .eatCircle {
@@ -116,25 +114,25 @@ body {
 
 .first {
   left: 208px;
-  top: 11px;
+  top: 50px;
 }
 
 .second {
-  top: 11px;
-  left: 333px;
+  top: 50px;
+  left: 326px;
 }
 
 .third {
-  top: 368px;
+  top: 331px;
   right: 293px;
 }
 .fourth {
-  top: 368px;
-  right: 168px;
+  top: 331px;
+  right: 176px;
 }
 
 .box {
   top: 48%;
-  left: 8%;
+  left: 10%;
 }
 
