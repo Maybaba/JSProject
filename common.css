@@ -15,14 +15,16 @@ body {
   background: #B4B5FE;
   border: 1px solid #000;
   margin-top: 7%;
+
 }
 .game {
   width: 700px;
   height: 400px;
   margin: 100px auto;
-  background: yellow;
+  /* background: yellow; */
   border: 1px solid #000;
 }
+
 .box {
   width: 20px;
   height: 20px;
@@ -31,6 +33,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 500;
 }
 .avoidCircle {
   width: 20px;
@@ -63,4 +66,6 @@ body {
   height: 20px;
   background: #b5feb4;
 }
+
+
 
