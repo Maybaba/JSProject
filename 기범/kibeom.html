@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hardest Game by kibeom</title>
     <link rel="stylesheet" href="./kibeom.css" />
-    <script src="./js/getDom.js" defer></script>
+    <script type="module" src="./js/getDom.js" defer></script>
+    <script type="module" src="./js/makeFunction.js" defer></script>
   </head>
   
   <body>
     <div class="wrap">
       <div class="game">
-        <div class="box character"></div>
+        <div class="box"></div>
         <div class="avoidCircle" id="one"></div>
         <div class="avoidCircle" id="two"></div>
         <div class="avoidCircle" id="three"></div>
@@ -120,7 +121,7 @@
         <div class="backgroundInGame1 white"></div>
         <div class="backgroundInGame2 gray"></div>
         <div class="backgroundInGame1 white"></div>
-        <div class="safeArea"></div>
+        <div class="clearZone"></div>
         <div class="safeArea none leftborder"></div>
         <div class="safeArea none rightborder "></div>
         <div class="safeArea"></div>
@@ -137,7 +138,7 @@
         <div class="backgroundInGame2 gray"></div>
         <div class="backgroundInGame1 white"></div>
         <div class="backgroundInGame2 gray"></div>
-        <div class="safeArea"></div>
+        <div class="clearZone"></div>
         <div class="safeArea none leftborder"></div>
         <div class="safeArea none "></div>
         <div class="backgroundInGame2 none topborder rightborder"></div>

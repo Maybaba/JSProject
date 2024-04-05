@@ -1,6 +1,6 @@
 
 // 캐릭터
-const $char = document.querySelector('.character');
+export const $char = document.querySelector('.character');
 // 파란 공
-const $avoid = [...document.querySelectorAll('.avoidCircle')];
+export const $avoid = [...document.querySelectorAll('.avoidCircle')];
 

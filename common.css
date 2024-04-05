@@ -24,6 +24,7 @@ body {
   /* background: yellow; */
   border: 1px solid #000;
 }
+
 .box {
   width: 20px;
   height: 20px;
@@ -32,6 +33,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 500;
 }
 .avoidCircle {
   width: 20px;
@@ -64,4 +66,6 @@ body {
   height: 20px;
   background: #b5feb4;
 }
+
+
 
