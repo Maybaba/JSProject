@@ -16,6 +16,7 @@ function clear() {
     console.log($redBoxXCoor);
     if ($redBoxXCoor > $clear) {
     $game.innerHTML = '';
+    window.location.href = "http://127.0.0.1:5500/subPage.html";
     return;
     }
   }
