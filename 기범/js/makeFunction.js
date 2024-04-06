@@ -1,25 +1,10 @@
-// 클리어 시 삭제에 필요한 변수
-const $body = document.body;
-const $game = document.querySelector('.game')
+import { $char, $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear } from './getDom.js';
 
-// 파란 공
-const $avoid = [...document.querySelectorAll(".avoidCircle")];
-// 클리어존
-const $clearZone = document.querySelector(".clearZone");
-console.log($clearZone);
-// 빨간 박스
-const $redBox = document.querySelector(".box");
 
-// 클리어존의 x(가로)좌표 값을 변수에 담는 과정
-let $clearZoneCoor = $clearZone.getBoundingClientRect();
-console.log(Math.floor($clearZoneCoor.x));
-let $clear = $clearZoneCoor.x;
+
 
 // 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
 // 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
-let $redBoxCoor = $redBox.getBoundingClientRect();
-let $redBoxXCoor = Math.floor($redBoxCoor.x);
-console.log($redBoxXCoor);
 
 
 // char의 z-index가 safeArea보다 높다면 delete element.
