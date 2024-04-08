@@ -51,7 +51,7 @@ const intervalId = setInterval(function () {
     }
   });
 
-  $countBox.textContent = (`남은 동그라미 수 : ${result}`);
+
   
   // 남은 동그라미 수가 0일 때 게임 종료
   if (result === 0) {

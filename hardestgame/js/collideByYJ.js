@@ -18,7 +18,7 @@ console.log(`restartArea 위치 정보: ${rect.x}, ${rect.y}`, rect);
 function detectCollision() {
   // 2-1. 빨간 박스의 위치와 크기 가져오기
   const redBoxRect = $redBox.getBoundingClientRect();
-  console.log(`redBoxRect : `, redBoxRect);
+  // console.log(`redBoxRect : `, redBoxRect);
 
   // 2-2. 파란 공들과 충돌 확인하기
   $avoid.forEach(($avoid) => {

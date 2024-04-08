@@ -292,14 +292,14 @@ body .countbox{
 }
 .top {
   position: absolute;
-  top: 10.2%;
+  /* top: 10.2%; */
   width: 848px;
 }
 .top .menu {
   font-size: 40px;
   padding-left: 10px;
-  
 }
+
 .top .round {
   font-size: 30px;
   padding-left: 50px;
