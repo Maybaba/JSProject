@@ -44,7 +44,7 @@ document.addEventListener('keydown', function(event) {
   const $boxTop = parseInt($boxStyle.top);
   const $boxWidth = parseInt($boxStyle.width);
   const $boxHeight = parseInt($boxStyle.height);
-  const step = 5;
+  const step = 20;
 
   switch(event.key) {
     case 'ArrowLeft':
