@@ -13,7 +13,7 @@
 
 body {
   width: 100%;
-    height: 800px;
+    height: 600px;
     background: white;
     margin: 100px auto
 }
@@ -56,15 +56,16 @@ body {
   position: absolute;
 }
 .backgroundInGame1 {
-  width: 5.8%;
+  width: 40px;
   height: 40px;
   background: #f7f7ff;
 }
 .backgroundInGame2 {
-  width: 5.8%;
+  width: 40px;
   height: 40px;
   background: #e6e6ff;
 }
+
 
 .eatCircle {
   width: 20px;
@@ -114,22 +115,22 @@ body {
 }
 
 .first {
-  left: 208px;
+  left: 210px;
   top: 50px;
 }
 
 .second {
   top: 50px;
-  left: 364px;
+  left: 368px;
 }
 
 .third {
-  top: 331px;
-  right: 333px;
+  top: 329px;
+  right: 330px;
 }
 .fourth {
-  top: 331px;
-  right: 216px;
+  top: 329px;
+  right: 212px;
 }
 
 
@@ -143,17 +144,17 @@ body {
 }
 #three {
   top: 90px;
-  left: 404px;
+  left: 410px;
   
 }
 #four {
   top: 90px;
-  left: 482px;
+  left: 488px;
 }
 
 #five {
   top: 90px;
-  left: 560px;
+  left: 568px;
 }
 #six {
   top: 170px;
@@ -161,15 +162,15 @@ body {
 }
 #seven {
   top: 170px;
-  left: 404px;
+  left: 410px;
 }
 #eight {
   top: 170px;
-  left: 482px;
+  left: 488px;
 }
 #nine {
   top: 170px;
-  left: 560px;
+  left: 566px;
 }
 #ten {
   top: 170px;
@@ -185,15 +186,15 @@ body {
 }
 #thirteen {
   top: 250px;
-  left: 286px;
+  left: 290px;
 }
 #fourteen {
   top: 250px;
-  left: 482px;
+  left: 488px;
 }
 #fifteen {
   top: 250px;
-  left: 560px;
+  left: 566px;
 }
 #sixteen {
   top: 330px;
@@ -205,15 +206,15 @@ body {
 }
 #eighteen {
   top: 330px;
-  left: 286px;
+  left: 290px;
 }
 #nineteen {
   top: 330px;
-  left: 482px;
+  left: 488px;
 }
 #twenty {
   top: 330px;
-  left: 560px;
+  left: 566px;
 }
 .avoidCircle {
   position: absolute;
@@ -243,6 +244,21 @@ body {
   position: relative;
   z-index: 1;
 }
+
+body .countbox{
+  width: 350px;
+  height: 50px;
+  background: #000;
+  border: 1px solid #000;
+  position: absolute;
+  font-size: 25px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+} 
 
 
 
