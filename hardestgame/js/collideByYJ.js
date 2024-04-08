@@ -39,6 +39,7 @@ function detectCollision() {
       //해당하는 값으로 재설정
       $redBox.style.left = restartArea.offsetLeft + 10 + "px"; //암묵적 형 변환
       $redBox.style.top = restartArea.offsetTop + 30 + "px";
+      $
       const redboxPosition = $redBox.getBoundingClientRect();
       console.log(
         `재시작 위치 :${redboxPosition.x}, ${redboxPosition.y}`,

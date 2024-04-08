@@ -1,3 +1,4 @@
+
 import {  $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear, $eatCircle1 } from './getDom.js';
 
 
@@ -8,12 +9,20 @@ console.log(`$eatCircle1= ${{$eatCircle1}}`);
 
 // char의 z-index가 safeArea보다 높다면 delete element.
 
+
 export function clear() {
+
+
+
+
   if (true) {
     let $redBoxCoor = $redBox.getBoundingClientRect();
     let $redBoxXCoor = Math.floor($redBoxCoor.x);
     console.log($redBoxXCoor);
+
     if ($redBoxXCoor > $clear - 23) { // 23은 디테일, 끝내는 함수
+      console.log(`dddd`);
+
     $game.innerHTML = '';
     window.location.href = "http://127.0.0.1:5500/hardestgame/html/subPage.html";
     return;
@@ -29,13 +38,11 @@ document.addEventListener("keydown", function (event) {
   const $boxTop = parseInt($boxStyle.top);
   const $boxWidth = parseInt($boxStyle.width);
   const $boxHeight = parseInt($boxStyle.height);
+  const step = 25;
 
-  // const step = 5;
-  clear();
+  // clear();
 
-  const step = 10;
-
-
+  
   switch (event.key) {
     case "ArrowLeft":
       $box.style.left = Math.max($boxLeft - step, 0) + "px";
@@ -81,3 +88,8 @@ document.addEventListener("keydown", function (event) {
       break;
   }
 });
+
+
+export default clear;
+
+

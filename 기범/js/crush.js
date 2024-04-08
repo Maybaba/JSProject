@@ -1,7 +1,4 @@
-import clear from './makeFunction.js'
-import { $char, $avoid, $game, $clearZone, $clearZoneCoor, $clear } from './getDom.js';;
-
-
+import { $char, $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear } from './getDom.js';
 // // DOM 요소 가져오기
 // const $redBox = document.getElementById('redbox');
 // const $eatCircleFirst = document.getElementById('eatCircleFirst');
@@ -12,21 +9,19 @@ import { $char, $avoid, $game, $clearZone, $clearZoneCoor, $clear } from './getD
 
 
 
-
-
-
 // DOM 요소 가져오기
 
+const $countBox = document.querySelector(".countbox");
 
 const $redBox = document.getElementById('redbox');
 
 const $eatCircle = document.querySelectorAll(".eatCircle");
 
-
 // const $eatCircleFirst = document.getElementById('eatCircleFirst');
 // const $eatCircleSecond = document.getElementById('eatCircleSecond');
 // const $eatCircleThird = document.getElementById('eatCircleThird');
 // const $eatCircleFourth = document.getElementById('eatCircleFourth');
+
 
 
 // 충돌 감지 함수
@@ -39,8 +34,9 @@ function isColliding(rect1, rect2) {
   );
 }
 
-  // 매 100ms마다 각 동그라미와의 충돌 감지
- const intervalId = setInterval(function () {
+
+// 매 100ms마다 각 동그라미와의 충돌 감지
+const intervalId = setInterval(function () {
   // 빨간 박스의 위치 및 크기 가져오기
   const redBoxRect = $redBox.getBoundingClientRect();
 
@@ -50,26 +46,20 @@ function isColliding(rect1, rect2) {
     const circleRect = circle.getBoundingClientRect();
     if (isColliding(redBoxRect, circleRect)) {
       circle.style.display = "none";
-      
     }
     if (circle.style.display !== "none") {
       result++;
     }
   });
 
-
-  let $redBox_Rect = Math.floor(redBoxRect.x)
-
+  $countBox.textContent = (`남은 동그라미 수 : ${result}`);
+  
   // 남은 동그라미 수가 0일 때 게임 종료
-  if (result === 0 && $redBox_Rect > $clear -23 ) {
+  if (result === 0) {
     clearInterval(intervalId);
-    console.log(result);
-    clear();
+    $countBox.textContent = ("다음 스테이지로 이동하세요");
   }
 }, 100); // 매 100ms마다 충돌 감지
-
-
-
 
 
 
