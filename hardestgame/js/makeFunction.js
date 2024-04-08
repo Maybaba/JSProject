@@ -8,7 +8,7 @@ console.log(`$eatCircle1= ${{$eatCircle1}}`);
 
 // char의 z-index가 safeArea보다 높다면 delete element.
 
-function clear() {
+export function clear() {
   if (true) {
     let $redBoxCoor = $redBox.getBoundingClientRect();
     let $redBoxXCoor = Math.floor($redBoxCoor.x);
