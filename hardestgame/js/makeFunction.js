@@ -1,5 +1,5 @@
 
-import {  $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear, $eatCircle1 } from './getDom.js';
+import { $redBox, $game, $clear, $eatCircle1 } from './getDom.js';
 
 
 console.log(`$eatCircle1= ${{$eatCircle1}}`);

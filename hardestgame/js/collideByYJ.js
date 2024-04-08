@@ -50,3 +50,5 @@ function detectCollision() {
 }
 // 3. 매 100ms마다 충돌 감지 함수 실행
 setInterval(detectCollision, 100);
+
+export default { detectCollision }

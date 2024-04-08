@@ -1,5 +1,5 @@
-import clear from './makeFunction.js'
-import { $char, $avoid, $game, $clearZone, $clearZoneCoor, $clear } from './getDom.js';;
+import clear from './makeFunction.js';
+import { $clear } from './getDom.js';
 
 
 // // DOM 요소 가져오기
@@ -30,7 +30,7 @@ const $eatCircle = document.querySelectorAll(".eatCircle");
 
 
 // 충돌 감지 함수
-function isColliding(rect1, rect2) {
+export function isColliding(rect1, rect2) {
   return !(
     rect1.right < rect2.left ||
     rect1.left > rect2.right ||
@@ -68,7 +68,7 @@ function isColliding(rect1, rect2) {
   }
 }, 100); // 매 100ms마다 충돌 감지
 
-
+export {intervalId}; 
 
 
 
