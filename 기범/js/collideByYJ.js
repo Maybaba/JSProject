@@ -6,7 +6,7 @@ console.log($redBox);
 const $avoid = [...document.querySelectorAll(".avoidCircle")];
 
 //1. restartArea 위치
-//1-1. safeArea 좌표 값을 변수로 선언(시작지점 safe-Area 네 번째 요소)
+//1-1. safeArea 좌표 값을 변수로 선언(시작지점 html의 safe-Area 네 번째 요소)
 const safeArea = [...document.querySelectorAll(".safeArea")];
 const restartArea = safeArea[3];
 console.log(restartArea);
