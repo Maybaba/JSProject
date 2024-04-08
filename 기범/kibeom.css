@@ -15,7 +15,8 @@ body {
   width: 100%;
     height: 600px;
     background: white;
-    margin: 100px auto
+    margin: 100px auto;
+    
 }
 .wrap {
   width: 850px;
@@ -24,6 +25,7 @@ body {
   background: #B4B5FE;
   border: 1px solid #000;
   margin-top: 7%;
+ 
 
 }
 .game {
@@ -35,6 +37,7 @@ body {
   display: flex;
   flex-wrap:wrap;
   position: relative;
+  
 }
 .box {
   width: 20px;
@@ -218,7 +221,7 @@ body {
 }
 .avoidCircle {
   position: absolute;
-  animation: moveBox 1500ms linear infinite;
+  animation: moveBox 2500ms linear infinite;
 }
 @keyframes moveBox {
   0% {
@@ -260,6 +263,83 @@ body .countbox{
   padding-top: 10px;
 } 
 
+
+.wrap1 {
+  width: 850px;
+  height: 600px;
+  margin: 100px auto;
+  background: linear-gradient(to bottom, #B4B5FE, #ffffff);
+  border: 1px solid #000;
+  margin-top: 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+
+.black {
+  background: #000;
+  width: 100%;
+  height: 60px;
+  color: white;
+  display: flex;
+  /* font-size: 50px; */
+  justify-content: space-between;
+  align-items: center;
+  /* position: absolute;
+  top: 10.2%; */
+}
+.top {
+  position: absolute;
+  top: 10.2%;
+  width: 848px;
+}
+.top .menu {
+  font-size: 40px;
+  padding-left: 10px;
+  
+}
+.top .round {
+  font-size: 30px;
+  padding-left: 50px;
+  
+}
+.top .deaths {
+  font-size: 35px;
+  padding-right: 10px;
+  
+}
+.bottom {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
+  bottom: 10.2%;
+}
+.bottom .more {
+  font-size: 30px;
+  padding-left: 10px;
+  
+}
+.bottom .land {
+  font-size: 35px;
+  padding-right: 10px;
+  
+}
+
+.main {
+  font-size: 50px;
+  font-weight: 900;
+  width: 90%;
+  margin: 0 auto;
+  
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.try {
+  padding-top: 20px;
+}
 
 
 
