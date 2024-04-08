@@ -57,7 +57,9 @@ function isColliding(rect1, rect2) {
     }
   });
 
+
   let $redBox_Rect = Math.floor(redBoxRect.x)
+
   // 남은 동그라미 수가 0일 때 게임 종료
   if (result === 0 && $redBox_Rect > $clear -23 ) {
     clearInterval(intervalId);

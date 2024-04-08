@@ -1,6 +1,8 @@
-import { $char, $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear } from './getDom.js';;
+
+import {  $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear, $eatCircle1 } from './getDom.js';
 
 
+console.log(`$eatCircle1= ${{$eatCircle1}}`);
 // 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
 // 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
 
@@ -8,19 +10,26 @@ import { $char, $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear } fro
 // char의 z-index가 safeArea보다 높다면 delete element.
 
 
-function clear() {
+export function clear() {
+
+
+
+
   if (true) {
     let $redBoxCoor = $redBox.getBoundingClientRect();
     let $redBoxXCoor = Math.floor($redBoxCoor.x);
     console.log($redBoxXCoor);
-    if ($redBoxXCoor >  $clear - 23) { // 23은 디테일
+
+    if ($redBoxXCoor > $clear - 23) { // 23은 디테일, 끝내는 함수
       console.log(`dddd`);
+
     $game.innerHTML = '';
     window.location.href = "http://127.0.0.1:5500/hardestgame/html/subPage.html";
     return;
     }
   }
 }
+
 
 document.addEventListener("keydown", function (event) {
   const $box = document.querySelector(".box");

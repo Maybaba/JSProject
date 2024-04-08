@@ -1,6 +1,6 @@
 
-// 캐릭터
-const $char = document.querySelector('.character');
+// 노란 공
+const $eatCircle1 = [...document.querySelectorAll('.eatCircle')]
 
 // 파란 공
 const $avoid = [...document.querySelectorAll('.avoidCircle')];
@@ -19,5 +19,5 @@ const $clearZoneCoor = $clearZone.getBoundingClientRect();
 console.log(Math.floor($clearZoneCoor.x));
 const $clear = $clearZoneCoor.x;
 
-export { $char, $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear };
+export { $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear, $eatCircle1 };
 
