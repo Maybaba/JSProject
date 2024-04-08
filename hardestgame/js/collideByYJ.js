@@ -15,7 +15,7 @@ const rect = restartArea.getBoundingClientRect();
 console.log(`restartArea 위치 정보: ${rect.x}, ${rect.y}`, rect);
 
 // 2. 충돌 감지를 위한 함수
-function detectCollision() {
+export function detectCollision() {
   // 2-1. 빨간 박스의 위치와 크기 가져오기
   const redBoxRect = $redBox.getBoundingClientRect();
   // console.log(`redBoxRect : `, redBoxRect);
@@ -39,7 +39,7 @@ function detectCollision() {
       //해당하는 값으로 재설정
       $redBox.style.left = restartArea.offsetLeft + 10 + "px"; //암묵적 형 변환
       $redBox.style.top = restartArea.offsetTop + 30 + "px";
-      $
+      // $
       const redboxPosition = $redBox.getBoundingClientRect();
       console.log(
         `재시작 위치 :${redboxPosition.x}, ${redboxPosition.y}`,
@@ -50,5 +50,3 @@ function detectCollision() {
 }
 // 3. 매 100ms마다 충돌 감지 함수 실행
 setInterval(detectCollision, 100);
-
-export default { detectCollision }

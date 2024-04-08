@@ -1,7 +1,8 @@
 
 import { clear } from './makeFunction.js'
 import { detectCollision } from './collideByYJ.js'
-import { intervalId } from './crush.js'
+import { $redBox, $eatCircle1, $clear } from './getDom.js';
+// import { intervalId } from './crush.js'
 
 
 document.addEventListener("keydown", function (event) {
@@ -76,7 +77,7 @@ function isColliding(rect1, rect2) {
 
   // 각 동그라미마다 충돌 여부 확인 및 처리
   let result = 0;
-  $eatCircle.forEach(circle => {
+  $eatCircle1.forEach(circle => {
     const circleRect = circle.getBoundingClientRect();
     if (isColliding(redBoxRect, circleRect)) {
       circle.style.display = "none";

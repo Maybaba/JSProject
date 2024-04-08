@@ -40,7 +40,7 @@ document.addEventListener("keydown", function (event) {
   const $boxHeight = parseInt($boxStyle.height);
   const step = 25;
 
-  // clear();
+
 
   
   switch (event.key) {
