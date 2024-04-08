@@ -14,7 +14,7 @@ function clear() {
     let $redBoxCoor = $redBox.getBoundingClientRect();
     let $redBoxXCoor = Math.floor($redBoxCoor.x);
     console.log($redBoxXCoor);
-    if ($redBoxXCoor > $clear) {
+    if ($redBoxXCoor > $clear - 23) { // 23은 디테일
     $game.innerHTML = '';
     window.location.href = "http://127.0.0.1:5500/subPage.html";
     return;
