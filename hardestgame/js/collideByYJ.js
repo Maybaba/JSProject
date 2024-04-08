@@ -18,7 +18,7 @@ console.log(`restartArea 위치 정보: ${rect.x}, ${rect.y}`, rect);
 function detectCollision() {
   // 2-1. 빨간 박스의 위치와 크기 가져오기
   const redBoxRect = $redBox.getBoundingClientRect();
-  console.log(`redBoxRect : `, redBoxRect);
+  // console.log(`redBoxRect : `, redBoxRect);
 
   // 2-2. 파란 공들과 충돌 확인하기
   $avoid.forEach(($avoid) => {
@@ -39,6 +39,7 @@ function detectCollision() {
       //해당하는 값으로 재설정
       $redBox.style.left = restartArea.offsetLeft + 10 + "px"; //암묵적 형 변환
       $redBox.style.top = restartArea.offsetTop + 30 + "px";
+      $
       const redboxPosition = $redBox.getBoundingClientRect();
       console.log(
         `재시작 위치 :${redboxPosition.x}, ${redboxPosition.y}`,
