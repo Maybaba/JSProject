@@ -16,7 +16,7 @@ function clear() {
     console.log($redBoxXCoor);
     if ($redBoxXCoor > $clear - 23) { // 23은 디테일
     $game.innerHTML = '';
-    window.location.href = "http://127.0.0.1:5500/subPage.html";
+    window.location.href = "http://127.0.0.1:5500/hardestgame/html/subPage.html";
     return;
     }
   }
@@ -30,10 +30,10 @@ document.addEventListener("keydown", function (event) {
   const $boxWidth = parseInt($boxStyle.width);
   const $boxHeight = parseInt($boxStyle.height);
 
-  const step = 5;
+  // const step = 5;
   clear();
 
-  // const step = 20;
+  const step = 10;
 
 
   switch (event.key) {
