@@ -245,6 +245,21 @@ body {
   z-index: 1;
 }
 
+body .countbox{
+  width: 350px;
+  height: 50px;
+  background: #000;
+  border: 1px solid #000;
+  position: absolute;
+  font-size: 25px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+} 
+
 
 
 

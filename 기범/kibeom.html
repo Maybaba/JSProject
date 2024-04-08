@@ -6,12 +6,14 @@
     <title>Hardest Game by kibeom</title>
     <link rel="stylesheet" href="./kibeom.css" />
     <script type="module" src="./js/makeFunction.js" defer></script>
+    <script src="js/crush.js" defer></script>
   </head>
   
   <body>
     <div class="wrap">
+      <div class="countbox"></div>
       <div class="game">
-        <div class="box"></div>
+        <div id="redbox" class="box"></div>
         <div class="avoidCircle" id="one"></div>
         <div class="avoidCircle" id="two"></div>
         <div class="avoidCircle" id="three"></div>
@@ -34,15 +36,15 @@
         <div class="avoidCircle" id="twenty"></div>
         <div class="backgroundInGame1 white none"></div>
         <div class="backgroundInGame2 gray none"></div>
-        
+
         <div class="backgroundInGame1 white none bottomborder"></div>
         <div class="backgroundInGame2 gray none bottomborder "></div>
         <div class="backgroundInGame1 white none bottomborder"></div>
         <div class="backgroundInGame2 gray  none bottomborder"></div>
-        <div class="eatCircle first"></div>
-        <div class="eatCircle second"></div>
-        <div class="eatCircle third"></div>
-        <div class="eatCircle fourth"></div>
+        <div id="eatCircleFirst" class="eatCircle first"></div>
+        <div id="eatCircleSecond" class="eatCircle second"></div>
+        <div id="eatCircleThird" class="eatCircle third"></div>
+        <div id="eatCircleFourth" class="eatCircle fourth"></div>
         <div class="backgroundInGame1 white none "></div>
         <div class="backgroundInGame2 gray none "></div>
         <div class="backgroundInGame1 white none "></div>
