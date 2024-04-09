@@ -3,61 +3,61 @@ import { detectCollision } from "./collideByYJ.js";
 import { $redBox, $eatCircle1, $clear } from "./getDom.js";
 // import { intervalId } from './crush.js'
 
-document.addEventListener("keydown", function (event) {
-  const $box = document.querySelector(".box");
-  const $boxStyle = getComputedStyle($box);
-  const $boxLeft = parseInt($boxStyle.left);
-  const $boxTop = parseInt($boxStyle.top);
-  const $boxWidth = parseInt($boxStyle.width);
-  const $boxHeight = parseInt($boxStyle.height);
-  const step = 15;
+// document.addEventListener("keydown", function (event) {
+//   const $box = document.querySelector(".box");
+//   const $boxStyle = getComputedStyle($box);
+//   const $boxLeft = parseInt($boxStyle.left);
+//   const $boxTop = parseInt($boxStyle.top);
+//   const $boxWidth = parseInt($boxStyle.width);
+//   const $boxHeight = parseInt($boxStyle.height);
+//   const step = 15;
 
-    switch (event.key) {
-      case "ArrowLeft":
-        $box.style.left = Math.max($boxLeft - step, 0) + "px";  
-        break;
-      case "ArrowUp":
-        $box.style.top = Math.max($boxTop - step, 0) + "px";
-        break;
-      case "ArrowRight":
-        $box.style.left =
-          Math.min(window.innerWidth - $boxWidth, $boxLeft + step) + "px";
-        break;
-      case "ArrowDown":
-        $box.style.top =
-          Math.min(window.innerHeight - $boxHeight, $boxTop + step) + "px";
-        break;
-      case "ArrowLeft":
-        if (event.key === "ArrowLeft" && event.key === "ArrowUp") {
-          $box.style.left = Math.max($boxLeft - step, 0) + "px";
-          $box.style.top = Math.max($boxTop - step, 0) + "px";
-        }
-        break;
-      case "ArrowLeft":
-        if (event.key === "ArrowLeft" && event.key === "ArrowDown") {
-          $box.style.left = Math.max($boxLeft - step, 0) + "px";
-          $box.style.top =
-            Math.min(window.innerHeight - $boxHeight, $boxTop + step) + "px";
-        }
-        break;
-      case "ArrowRight":
-        if (event.key === "ArrowRight" && event.key === "ArrowUp") {
-          $box.style.left =
-            Math.min(window.innerWidth - $boxWidth, $boxLeft + step) + "px";
-          $box.style.top = Math.max($boxTop - step, 0) + "px";
-        }
-        break;
-      case "ArrowRight":
-        if (event.key === "ArrowRight" && event.key === "ArrowDown") {
-          $box.style.left =
-            Math.min(window.innerWidth - $boxWidth, $boxLeft + step) + "px";
-          $box.style.top =
-            Math.min(window.innerHeight - $boxHeight, $boxTop + step) + "px";
-        }
-        break;
-    }
+//     switch (event.key) {
+//       case "ArrowLeft":
+//         $box.style.left = Math.max($boxLeft - step, 0) + "px";  
+//         break;
+//       case "ArrowUp":
+//         $box.style.top = Math.max($boxTop - step, 0) + "px";
+//         break;
+//       case "ArrowRight":
+//         $box.style.left =
+//           Math.min(window.innerWidth - $boxWidth, $boxLeft + step) + "px";
+//         break;
+//       case "ArrowDown":
+//         $box.style.top =
+//           Math.min(window.innerHeight - $boxHeight, $boxTop + step) + "px";
+//         break;
+//       case "ArrowLeft":
+//         if (event.key === "ArrowLeft" && event.key === "ArrowUp") {
+//           $box.style.left = Math.max($boxLeft - step, 0) + "px";
+//           $box.style.top = Math.max($boxTop - step, 0) + "px";
+//         }
+//         break;
+//       case "ArrowLeft":
+//         if (event.key === "ArrowLeft" && event.key === "ArrowDown") {
+//           $box.style.left = Math.max($boxLeft - step, 0) + "px";
+//           $box.style.top =
+//             Math.min(window.innerHeight - $boxHeight, $boxTop + step) + "px";
+//         }
+//         break;
+//       case "ArrowRight":
+//         if (event.key === "ArrowRight" && event.key === "ArrowUp") {
+//           $box.style.left =
+//             Math.min(window.innerWidth - $boxWidth, $boxLeft + step) + "px";
+//           $box.style.top = Math.max($boxTop - step, 0) + "px";
+//         }
+//         break;
+//       case "ArrowRight":
+//         if (event.key === "ArrowRight" && event.key === "ArrowDown") {
+//           $box.style.left =
+//             Math.min(window.innerWidth - $boxWidth, $boxLeft + step) + "px";
+//           $box.style.top =
+//             Math.min(window.innerHeight - $boxHeight, $boxTop + step) + "px";
+//         }
+//         break;
+//     }
 
-});
+// });
 
 function isColliding(rect1, rect2) {
   return !(
