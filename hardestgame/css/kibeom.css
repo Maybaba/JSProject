@@ -48,6 +48,7 @@ body {
   position: absolute;
   top: 48%;
   left: 7.5%;
+  transition: 80ms linear;
 }
 
 
