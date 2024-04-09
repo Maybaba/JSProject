@@ -7,7 +7,7 @@
     margin: 0;
     box-sizing: border-box;
     text-align: center;
-    
+
   }
 
 
@@ -49,6 +49,9 @@ body {
   top: 48%;
   left: 7.5%;
 }
+
+
+
 .avoidCircle {
   width: 20px;
   height: 20px;
