@@ -1,7 +1,9 @@
 import { clear } from "./makeFunction.js";
 import { detectCollision } from "./collideByYJ.js";
 import { $redBox, $eatCircle1, $clear } from "./getDom.js";
+import { hiddenClear, $hiddenClear } from "./hiddenClear.js";
 // import { intervalId } from './crush.js'
+$hiddenClear.addEventListener('click', hiddenClear);
 
 document.addEventListener("keydown", function (event) {
   const $box = document.querySelector(".box");

@@ -38,18 +38,18 @@ body {
 .top .menu {
   font-size: 40px;
   padding-left: 10px;
-  
+  /* width: 33%; */
 }
 .top .round {
   font-size: 30px;
-  padding-left: 50px;
-  
+  padding-right: 1dvh;
+  /* width: 33%; */
 }
-.top .deaths {
+/* .top .deaths {
   font-size: 35px;
   padding-right: 10px;
-  
-}
+  width: 33%;
+} */
 .bottom .more {
   font-size: 30px;
   padding-left: 10px;

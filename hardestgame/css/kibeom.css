@@ -301,6 +301,7 @@ body .countbox{
 .top .menu {
   font-size: 40px;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 .top .round {
@@ -322,12 +323,12 @@ body .countbox{
 .bottom .more {
   font-size: 30px;
   padding-left: 10px;
-  
+  cursor: pointer;
 }
 .bottom .land {
   font-size: 35px;
   padding-right: 10px;
-  
+  cursor: pointer;
 }
 
 .main {

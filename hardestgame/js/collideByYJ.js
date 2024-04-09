@@ -1,4 +1,8 @@
+import { $death } from "./getDom.js"
 
+export const totalDeathObject = {
+  totalDeath: null,
+};
 
 // 빨간 박스
 const $redBox = document.querySelector(".box");
@@ -13,17 +17,23 @@ const safeArea = [...document.querySelectorAll(".safeArea")];
 const restartArea = safeArea[3];
 console.log(restartArea);
 
+let deathCount = 0;
+
+
 const rect = restartArea.getBoundingClientRect();
 console.log(`restartArea 위치 정보: ${rect.x}, ${rect.y}`, rect);
-
 // 2. 충돌 감지를 위한 함수
 export function detectCollision() {
+
+  // let totalDeath;
+  $death.textContent = `DEATH: ${deathCount}`;
   // 2-1. 빨간 박스의 위치와 크기 가져오기
   const redBoxRect = $redBox.getBoundingClientRect();
   // console.log(`redBoxRect : `, redBoxRect);
 
   // 2-2. 파란 공들과 충돌 확인하기
   $avoid.forEach(($avoid) => {
+   
     const avoidRect = $avoid.getBoundingClientRect();
     // 2-3. 충돌 감지 로직
     if (
@@ -36,6 +46,11 @@ export function detectCollision() {
     ) {
       // 2-4. 충돌이 발생하면 해당 값의 아이디를 콘솔에 출력하고 safearea로 돌아가게 한다.
       console.log("충돌 발생:", $avoid.id);
+  
+      deathCount++;
+      
+     
+      
       // 2-5. safeArea로 다시 돌아가는 로직
       //2-6. safeArea의 부모요소로부터 left값과 top값의 좌표값을 구하여 빨간박스 위치를
       //해당하는 값으로 재설정
@@ -54,8 +69,11 @@ export function detectCollision() {
         `재시작 위치 :${redboxPosition.x}, ${redboxPosition.y}`,
         redboxPosition
       );
+      totalDeathObject.totalDeath = deathCount; // 다음페이지에서 출력될 누적 데스 수
     }
   });
+
 }
 // 3. 매 100ms마다 충돌 감지 함수 실행
 setInterval(detectCollision, 100);
+
