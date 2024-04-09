@@ -1,3 +1,5 @@
+
+
 // 빨간 박스
 const $redBox = document.querySelector(".box");
 console.log($redBox);
@@ -39,8 +41,15 @@ export function detectCollision() {
       //해당하는 값으로 재설정
       $redBox.style.left = restartArea.offsetLeft + 10 + "px"; //암묵적 형 변환
       $redBox.style.top = restartArea.offsetTop + 30 + "px";
+      // 노란 동그라미 재활성 로직 
+      const $eatCircle = document.querySelectorAll(".eatCircle");
+      $eatCircle.forEach(e=>{
+        e.style.display="block";
+      })
+      
       // $
       const redboxPosition = $redBox.getBoundingClientRect();
+      
       console.log(
         `재시작 위치 :${redboxPosition.x}, ${redboxPosition.y}`,
         redboxPosition
