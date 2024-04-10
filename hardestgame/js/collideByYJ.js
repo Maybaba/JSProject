@@ -9,8 +9,9 @@ const $avoid = [...document.querySelectorAll(".avoidCircle")];
 
 //1. restartArea 위치
 //1-1. safeArea 좌표 값을 변수로 선언(시작지점 html의 safe-Area 네 번째 요소)
-const safeArea = [...document.querySelectorAll(".safeArea")];
-const restartArea = safeArea[3];
+// const safeArea = [...document.querySelectorAll(".safeArea")];
+// const restartArea = safeArea[3];
+const restartArea = document.querySelector(".start"); 
 console.log(restartArea);
 
 const rect = restartArea.getBoundingClientRect();
@@ -47,7 +48,6 @@ export function detectCollision() {
         e.style.display="block";
       })
       
-      // $
       const redboxPosition = $redBox.getBoundingClientRect();
       
       console.log(
