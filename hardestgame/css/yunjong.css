@@ -9,20 +9,24 @@
 
 .game .delete {
   background: #b4b5fe;
-  z-index: 100;
+  z-index: 10;
   position: relative;
 }
 .game .bottomLine {
   border-bottom: 5px solid black;
+  z-index: 10;
 }
 .game .topLine {
   border-top: 5px solid black;
+  z-index: 10;
 }
 .game .leftLine {
   border-left: 5px solid black;
+  z-index: 10;
 }
 .game .rightLine {
   border-right: 5px solid black;
+  z-index: 10;
 }
 .game .box {
   width: 20px;
@@ -104,24 +108,24 @@
   height: 0;
   border-left: 10px solid transparent; /* 왼쪽 선 */
   border-right: 10px solid transparent; /* 오른쪽 선 */
-  border-bottom: 20px solid greenyellow; /* 아래쪽 선 */
-  z-index: 99999;
+  border-bottom: 20px solid green; /* 아래쪽 선 */
+  z-index: 9;
   position: absolute;
 }
 #avoid-8 {
   left: 20%;
-  bottom: 40%;
-  animation: moveInSpiral 1s 3.7s linear infinite;
+  bottom: 28%;
+  animation: moveInSpiral 1s 1s linear infinite;
 }
 #avoid-9 {
   left: 30%;
-  bottom: 20%;
-  animation: moveTriangleUp 1s 5s linear 3;
+  bottom: 25%;
+  animation: moveTriangleUp 1s 3s linear 1;
 }
 #avoid-10 {
   left: 40%;
-  bottom: 20%;
-  animation: moveTriangleUp 1s 7s linear 3;
+  bottom: 25%;
+  animation: moveTriangleUp 1s 5s linear 1;
 }
 @keyframes moveInSpiral {
   0% {
@@ -145,7 +149,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-30px);
+    transform: translateY(-100px);
   }
   100% {
     transform: translateY(0);

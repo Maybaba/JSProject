@@ -9,7 +9,7 @@ const $avoid = [...document.querySelectorAll(".avoidCircle")];
 const $avoidTriangle = [...document.querySelectorAll(".avoidTriangle")];
 
 //pikaboo
-const $pikabooEvent = document.getElementById("pikabooEvent");
+// const $pikabooEvent = document.getElementById("pikabooEvent");
 
 //1. restartArea 위치
 //1-1. safeArea 좌표 값을 변수로 선언(시작지점 html의 safe-Area 네 번째 요소)
@@ -56,6 +56,8 @@ export function detectCollision() {
         `재시작 위치 :${redboxPosition.x}, ${redboxPosition.y}`,
         redboxPosition
       );
+      // 충돌 감지 함수에서 호출하여 삼각형 애니메이션 재활성화
+      restartTriangleAnimation();
     }
   }
 
@@ -72,7 +74,7 @@ export function detectCollision() {
       )
     ) {
       // 충돌이 발생하면 해당 값의 아이디를 콘솔에 출력하고 safearea로 돌아가게 한다.
-      console.log(`충돌 발생 avoidTriangle(초록세모) : ${$avoidTriangles.id}`);
+      console.log(`충돌 발생 세모 : ${$avoidTriangles.id}`);
       // safeArea로 다시 돌아가는 로직
       // safeArea의 부모요소로부터 left값과 top값의 좌표값을 구하여 빨간박스 위치를 해당하는 값으로 재설정
       $redBox.style.left = restartArea.offsetLeft + 10 + "px"; // 암묵적 형 변환
@@ -89,31 +91,47 @@ export function detectCollision() {
         `재시작 위치 :${redboxPosition.x}, ${redboxPosition.y}`,
         redboxPosition
       );
+      // 충돌 감지 함수에서 호출하여 삼각형 애니메이션 재활성화
+      restartTriangleAnimation();
+
+      // const $avoidTriangle = document.querySelectorAll(".avoidTriangle");
+      // $avoidTriangle.forEach((e) => {
+      //   e.style.display = "block";
+      //   console.log("삼각애니재활성");
+      // });
     }
   }
-
-  // 피카부 이벤트존 충돌 감지 로직
-  // const picabooRect = $pikabooEvent.getBoundingClientRect();
-  // if (
-  //   !(
-  //     redBoxRect.right < picabooRect.left ||
-  //     redBoxRect.left > picabooRect.right ||
-  //     redBoxRect.bottom < picabooRect.top ||
-  //     redBoxRect.top > picabooRect.bottom
-  //   )
-  // ) {
-    // 충돌이 발생하면 해당 값의 아이디를 콘솔에 출력하고 2개의 초록세모를 움직인다
-  //   console.log(
-  //     `pikaboo 이벤트존 입성 : ${$pikabooEvent.id}, 초록세모 애니메이션 시작`
-  //   );
-  //   // 이벤트존 충돌에만 움직이는 초록세모 애니메이션 적용
-  //   $avoidTriangle.forEach(($triangle) => {
-  //     $triangle.style.animation = "moveTriangleUp 0.7s infinite";
-  //   });
-  // }
 }
+// 삼각형 애니메이션을 재활성화하는 함수
+function restartTriangleAnimation() {
+  const $avoidTriangle = document.querySelectorAll(".avoidTriangle");
+  $avoidTriangle.forEach((triangle) => {
+    // HTML 요소를 클론하여 기존 요소 대체
+    const newTriangle = triangle.cloneNode(true);
+    triangle.parentNode.replaceChild(newTriangle, triangle);
+  });
+}
+setInterval(detectCollision, 100);
 
-
+// 피카부 이벤트존 충돌 감지 로직
+// const picabooRect = $pikabooEvent.getBoundingClientRect();
+// if (
+//   !(
+//     redBoxRect.right < picabooRect.left ||
+//     redBoxRect.left > picabooRect.right ||
+//     redBoxRect.bottom < picabooRect.top ||
+//     redBoxRect.top > picabooRect.bottom
+//   )
+// ) {
+// 충돌이 발생하면 해당 값의 아이디를 콘솔에 출력하고 2개의 초록세모를 움직인다
+//   console.log(
+//     `pikaboo 이벤트존 입성 : ${$pikabooEvent.id}, 초록세모 애니메이션 시작`
+//   );
+//   // 이벤트존 충돌에만 움직이는 초록세모 애니메이션 적용
+//   $avoidTriangle.forEach(($triangle) => {
+//     $triangle.style.animation = "moveTriangleUp 0.7s infinite";
+//   });
+// }
 
 // // 2. 충돌 감지를 위한 함수
 // export function detectCollision() {
