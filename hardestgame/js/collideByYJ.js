@@ -57,5 +57,32 @@ export function detectCollision() {
     }
   });
 }
-// 3. 매 100ms마다 충돌 감지 함수 실행
-setInterval(detectCollision, 100);
+// // 3. 매 100ms마다 충돌 감지 함수 실행
+// setInterval(detectCollision, 100);
+
+// // 매 100ms마다 각 동그라미와의 충돌 감지
+// const intervalId = setInterval(function () {
+//   // 빨간 박스의 위치 및 크기 가져오기
+//   const redBoxRect = $redBox.getBoundingClientRect();
+
+//   // 각 세모마다 충돌 여부 확인 및 처리
+//   let result = 0;
+//   $eatCircle1.forEach((circle) => {
+//     const circleRect = circle.getBoundingClientRect();
+//     if (isColliding(redBoxRect, circleRect)) {
+//       circle.style.display = "none";
+//     }
+//     if (circle.style.display !== "none") {
+//       result++;
+//     }
+//   });
+
+//   let $redBox_Rect = Math.floor(redBoxRect.x);
+
+//   // 남은 동그라미 수가 0일 때 게임 종료
+//   if (result === 0 && $redBox_Rect > $clear - 23) {
+//     clearInterval(intervalId);
+//     console.log(result);
+//     clear();
+//   }
+// }, 100); // 매 100ms마다 충돌 감지

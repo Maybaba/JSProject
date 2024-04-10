@@ -3,7 +3,7 @@ import { detectCollision } from "./collideByYJ.js";
 import { $redBox, $eatCircle1, $clear } from "./getDom.js";
 // import { intervalId } from './crush.js'
 
-//background 숫자 안보이게 하기
+//background 숫자 안보이게 하기 240410
 document.querySelectorAll('.backgroundInGame1').forEach(function(element) {
   element.textContent = ''; 
 });
