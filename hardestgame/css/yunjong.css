@@ -2,7 +2,7 @@
 
 /* 박스의 시작 대상 */
 .game .start {
-  background: green;
+  /* background: green; */
 }
 
 /* 게임 배경 */
@@ -38,45 +38,63 @@
 /* 움직이는 대상 - 둥근 적 */
 
 #avoid-1 {
-  left: 30%;
+  left: 5%;
   bottom: 50%;
+  animation: moveBoxLi 1s linear infinite;
 }
-#avoid-2 {
-  left: 60%;
-  bottom: 55%;
-}
-#avoid-3 {
-  left: 65%;
-  bottom: 50%;
-}
-#avoid-4 {
-  left: 70%;
-  bottom: 40%;
-}
-#avoid-5 {
-  left: 75%;
-  bottom: 30%;
-}
-#avoid-6 {
-  left: 80%;
-  bottom: 20%;
-}
-#avoid-7 {
-  left: 85%;
-  bottom: 30%;
-}
-
-@keyframes moveBox {
+@keyframes moveBoxLi {
   0% {
     transform: translateX(0); 
   }
   50% {
-    transform: translateX(calc(100vw - 40px)); 
+    transform: translateX(320px); 
   }
   100% {
     transform: translateX(0); 
   }
 }
+#avoid-2 {
+  left: 60%;
+  bottom: 55%;
+  animation: moveBoxRain 1s linear infinite;
+}
+#avoid-3 {
+  left: 65%;
+  bottom: 59%;
+  animation: moveBoxRain 0.8s linear infinite;
+}
+#avoid-4 {
+  left: 70%;
+  bottom: 59%;
+  animation: moveBoxRain 0.6s linear infinite;
+}
+#avoid-5 {
+  left: 75%;
+  bottom: 75%;
+  animation: moveBoxRain 1.2s linear infinite;
+}
+#avoid-6 {
+  left: 80%;
+  bottom: 75%;
+  animation: moveBoxRain 1s linear infinite;
+}
+#avoid-7 {
+  left: 85%;
+  bottom: 60%;
+  animation: moveBoxRain 0.5s linear infinite;
+}
+@keyframes moveBoxRain {
+  0% {
+    transform: translateY(0); 
+  }
+  50% {
+    transform: translateY(130px); 
+  }
+  100% {
+    transform: translateY(0); 
+  }
+}
+
 
 
 /* 움직이는 대상 - 세모 적 */
@@ -97,8 +115,8 @@
 
 #eat-1 {
   position: absolute;
-  left: 8%;
-  bottom: 32%;
+  left: 49%;
+  bottom: 53%;
 }
 #eat-2 {
   position: absolute;

@@ -3,6 +3,14 @@ import { detectCollision } from "./collideByYJ.js";
 import { $redBox, $eatCircle1, $clear } from "./getDom.js";
 // import { intervalId } from './crush.js'
 
+//background 숫자 안보이게 하기
+document.querySelectorAll('.backgroundInGame1').forEach(function(element) {
+  element.textContent = ''; 
+});
+document.querySelectorAll('.backgroundInGame2').forEach(function(element) {
+  element.textContent = ''; 
+});
+
 document.addEventListener("keydown", function (event) {
   const $box = document.querySelector(".box");
   const $boxStyle = getComputedStyle($box);
