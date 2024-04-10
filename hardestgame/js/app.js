@@ -95,4 +95,5 @@ const intervalId = setInterval(function () {
   }
 }, 100); // 매 100ms마다 충돌 감지
 
-setInterval(detectCollision, 100);
+//0.1초마다 충돌 감지
+setTimeout(detectCollision, 100);
