@@ -27,9 +27,9 @@
 .game .box {
   width: 20px;
   height: 20px;
-  background: red;
+  background:  red;
   border: 5px solid #000;
-  z-index: 500;
+  z-index: 1000;
   position: absolute;
   top: 27.5%;
   left: 13%;
@@ -98,6 +98,14 @@
 
 
 /* 움직이는 대상 - 세모 적 */
+.avoidTriangle {
+  width: 20px;
+  height: 20px;
+  background: greenyellow;
+  border: 5px solid #000;
+  z-index: 99999;
+  position: absolute;
+}
 #avoid-8 {
   left: 20%;
   bottom: 20%;
