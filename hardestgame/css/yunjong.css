@@ -66,6 +66,19 @@
   bottom: 30%;
 }
 
+@keyframes moveBox {
+  0% {
+    transform: translateX(0); 
+  }
+  50% {
+    transform: translateX(calc(100vw - 40px)); 
+  }
+  100% {
+    transform: translateX(0); 
+  }
+}
+
+
 /* 움직이는 대상 - 세모 적 */
 #avoid-8 {
   left: 20%;
