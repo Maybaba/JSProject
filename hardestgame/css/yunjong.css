@@ -47,7 +47,7 @@
     transform: translateX(0); 
   }
   50% {
-    transform: translateX(320px); 
+    transform: translateX(310px); 
   }
   100% {
     transform: translateX(0); 
@@ -98,26 +98,61 @@
 
 
 /* 움직이는 대상 - 세모 적 */
+
 .avoidTriangle {
-  width: 20px;
-  height: 20px;
-  background: greenyellow;
-  border: 5px solid #000;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent; /* 왼쪽 선 */
+  border-right: 10px solid transparent; /* 오른쪽 선 */
+  border-bottom: 20px solid greenyellow; /* 아래쪽 선 */
   z-index: 99999;
   position: absolute;
 }
 #avoid-8 {
   left: 20%;
-  bottom: 20%;
+  bottom: 40%;
+  animation: moveInSpiral 1s 3.7s linear infinite;
 }
 #avoid-9 {
   left: 30%;
   bottom: 20%;
+  animation: moveTriangleUp 1s 5s linear 3;
 }
 #avoid-10 {
   left: 40%;
   bottom: 20%;
+  animation: moveTriangleUp 1s 7s linear 3;
 }
+@keyframes moveInSpiral {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(50px) translateY(50px) rotate(40deg);
+  }
+  50% {
+    transform: translateX(100px) translateY(0) rotate(70deg);
+  }
+  75% {
+    transform: translateX(50px) translateY(-50px) rotate(100deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(180deg);
+  }
+}
+@keyframes moveTriangleUp {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
 
 /* 움직이는 대상 - 코인 */
 
