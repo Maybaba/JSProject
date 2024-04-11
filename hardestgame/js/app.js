@@ -1,4 +1,5 @@
-import { $game, $redBox, $eatCircle1, $clear, $avoid, $death } from "./getDom.js";
+
+import { hiddenClear } from "./hiddenClear.js";
 import { detectCollision } from "./collideByYJ.js";
 import clear from "./makeFunction.js";
 
@@ -10,7 +11,6 @@ console.log(`$eatCircle1= ${{ $eatCircle1 }}`);
 // 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
 
 // char의 z-index가 safeArea보다 높다면 delete element.
-
 
 //키보드 입력 이벤트 및 벽 밖으로 나가지 못하게 하는 이벤트
 const $boxStyle = getComputedStyle($redBox);
@@ -114,7 +114,6 @@ moveBox();
 
 
 
-
 //노란 공 충돌 이벤트
 function isColliding(rect1, rect2) {
   return !(
@@ -150,10 +149,10 @@ const intervalId = setInterval(function () {
 
 let deathCount = 0;
 
+
 // setInterval(detectCollision, 100);
 
 // 0.1초마다 충돌 감지 함수 실행
 setInterval(detectCollision, 100);
 
 //죽은 시점의 논리변수, 죽은 판정 시작위치로  이동하기 전에 setInterval 끝내기
-
