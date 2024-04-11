@@ -21,7 +21,7 @@ export function clear() {
     console.log($redBoxXCoor);
 
     if ($redBoxXCoor > $clear - 23) { // 23은 디테일, 끝내는 함수
-      console.log(`dddd`);
+      
 
     $game.innerHTML = '';
     window.location.href = "http://127.0.0.1:5500/hardestgame/html/subPage.html";
