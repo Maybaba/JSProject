@@ -1,5 +1,5 @@
 
-export const $hiddenClear = document.querySelector('.land')
+
 export function hiddenClear() {
   if (true) {
     window.location.href = "http://127.0.0.1:5500/hardestgame/html/subPage.html";
