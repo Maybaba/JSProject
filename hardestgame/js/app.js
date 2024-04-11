@@ -197,10 +197,12 @@ let deathCount = 0;
 
 
 
-// 충돌 애니메이션 2
+// 파란공 충돌 애니메이션
 function detectCollision() {
+  //죽을 때마다 카운트 실행
   $death.textContent = `DEATH: ${deathCount}`;
   
+  //충돌하는 중이 아닐 경우
   if (!isitColliding) {
     const redBoxRect = $redBox.getBoundingClientRect();
     $avoid.forEach(($avoid) => {
@@ -213,7 +215,8 @@ function detectCollision() {
           redBoxRect.bottom < avoidRect.top ||
           redBoxRect.top > avoidRect.bottom
         )
-      ) {
+      ) { //충돌애니메이션이 진행되지 않는 상황일 경우
+        //충돌애니메이션이 진행되기 전 충돌하고 있는 경우
         if (!isAnimating) {
           isAnimating = true;
           isitColliding = true; // 충돌 감지 상태로 변경
@@ -247,6 +250,8 @@ function redboxDeadAnimation() {
     const currentTime = Date.now();
     const elapsedTime = currentTime - startTime;
 
+    if (elapsedTime = )
+
     if (elapsedTime < 1000) {
       const opacity = 1 - elapsedTime / 1000;
       $redBox.style.left = `${redBoxCollide.offsetLeft}px`;
@@ -264,13 +269,13 @@ function redboxDeadAnimation() {
 
 // 리스폰 함수
 function redboxRespawn() {
+  const restartArea = document.querySelector(".start");
   // red box를 다시 화면에 표시하기 전에 원래 위치로 되돌리기
-  const restartArea = document.getElementById("safeArea");
-  const parentRect = restartArea.parentElement.getBoundingClientRect();
+  // const restartArea = document.getElementById("safeArea");
+  // const parentRect = restartArea.parentElement.getBoundingClientRect();
   const restartAreaRect = restartArea.getBoundingClientRect();
-  const redBoxX = restartAreaRect.left - parentRect.left;
-  const redBoxY = restartAreaRect.top - parentRect.top;
-
+  const redBoxX = restartAreaRect.left;
+  const redBoxY = restartAreaRect.top;
   $redBox.style.left = `${redBoxX}px`;
   $redBox.style.top = `${redBoxY}px`;
 
@@ -285,7 +290,7 @@ function redboxRespawn() {
   isitColliding = false;
   isAnimating = false;
 
-  // 키 이벤트 다시 등록
+  // 키 이벤트 다시 등록, 기존 이벤트리스너 중복불가 - onkeydown
   window.addEventListener("keydown", function (event) {
     keys[event.key] = true;
   });
@@ -298,3 +303,6 @@ function redboxRespawn() {
 
 // 0.1초마다 충돌 감지 함수 실행
 setInterval(detectCollision, 100);
+
+//죽은 시점의 논리변수, 죽은 판정 시작위치로 이동하기 전에 setInterval 끝내기
+
