@@ -1,3 +1,4 @@
+
 import { $game, $redBox, $eatCircle1, $clear, $avoid, $death } from "./getDom.js";
 
 // 게임 클리어 이벤트
@@ -8,13 +9,14 @@ console.log(`$eatCircle1= ${{ $eatCircle1 }}`);
 // char의 z-index가 safeArea보다 높다면 delete element.
 
 export function clear() {
+
   if (true) {
     let $redBoxCoor = $redBox.getBoundingClientRect();
     let $redBoxXCoor = Math.floor($redBoxCoor.x);
     console.log($redBoxXCoor);
 
     if ($redBoxXCoor > $clear - 23) {
-      // 23은 디테일, 끝내는 함수
+
       console.log(`dddd`);
 
       $game.innerHTML = "";
@@ -27,9 +29,11 @@ export function clear() {
 
 
 
+
 // 충돌 애니메이션 1
 let isitColliding = false; // 충돌 감지 변수
 let isAnimating = false; // 애니메이션 중인지 여부 변수
+
 
 window.addEventListener("keydown", function (event) {
   if (!isitColliding) {
@@ -45,16 +49,6 @@ window.addEventListener("keyup", function (event) {
   }
 });
 
-
-
-//키보드 입력 이벤트 및 벽 밖으로 나가지 못하게 하는 이벤트
-const $boxStyle = getComputedStyle($redBox);
-let x = parseInt($boxStyle.left);
-let y = parseInt($boxStyle.top);
-const boxSize = parseInt($boxStyle.width);
-const step = 5;
-
-let keys = {};
 
 function moveBox() {
   if ("ArrowLeft" in keys) {
@@ -142,11 +136,11 @@ function checkCollision(direction) {
     }
   });
 
+
   return collision;
 }
 
 moveBox();
-
 
 
 //노란 공 충돌 이벤트
@@ -182,6 +176,7 @@ const intervalId = setInterval(function () {
   }
 }, 100);
 
+
 let deathCount = 0;
 
 
@@ -206,8 +201,7 @@ function detectCollision() {
         if (!isAnimating) {
           isAnimating = true;
           isitColliding = true; // 충돌 감지 상태로 변경
-          deathCount++;
-          $death.textContent = `DEATH: ${deathCount}`;
+
           // 1초 동안 키 입력 무시
           window.removeEventListener("keydown", function (event) {
             keys[event.key] = true;
@@ -215,13 +209,14 @@ function detectCollision() {
           window.removeEventListener("keyup", function (event) {
             delete keys[event.key];
           });
-          
+
           // 충돌 애니메이션 실행
           redboxDeadAnimation();
         }
       }
     });
   }
+
   
   // 충돌 감지 0.1초마다 실행
   setTimeout(detectCollision, 100);
@@ -243,6 +238,7 @@ function redboxDeadAnimation() {
       $redBox.style.opacity = opacity;
       requestAnimationFrame(opacityDecreasing);
     } else {
+
       // 1초가 지나면 애니메이션 종료 후 리스폰
       redboxRespawn();
     }
