@@ -1,9 +1,9 @@
+import { $game, $redBox, $eatCircle1, $clear, $avoid, $death } from "./getDom.js";
 
-import { clear } from "./makeFunction.js";
-import { detectCollision } from "./collideByYJ.js";
-import { $redBox, $eatCircle1, $clear } from "./getDom.js";
-// import { intervalId } from './crush.js'
-
+// 게임 클리어 이벤트
+console.log(`$eatCircle1= ${{ $eatCircle1 }}`);
+// 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
+// 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
 //div 숫자 안보이게 하기 240410
 document.querySelectorAll('.backgroundInGame1').forEach(function(element) {
   element.textContent = ''; 
@@ -15,35 +15,109 @@ document.querySelectorAll('.number').forEach(function(element) {
   element.textContent = ''; 
 });
 
-document.addEventListener("keydown", function (event) {
-  const $box = document.querySelector(".box");
-  const $boxStyle = getComputedStyle($box);
-  const $boxLeft = parseInt($boxStyle.left);
-  const $boxTop = parseInt($boxStyle.top);
-  const $boxWidth = parseInt($boxStyle.width);
-  const $boxHeight = parseInt($boxStyle.height);
-  const step = 15;
 
-    switch (event.key) {
-      case "ArrowLeft":
-        $box.style.left = Math.max($boxLeft - step, 0) + "px";  
-        break;
-      case "ArrowUp":
-        $box.style.top = Math.max($boxTop - step, 0) + "px";
-        break;
-      case "ArrowRight":
-        $box.style.left =
-          Math.min(window.innerWidth - $boxWidth, $boxLeft + step) + "px";
-        break;
-      case "ArrowDown":
-        $box.style.top =
-          Math.min(window.innerHeight - $boxHeight, $boxTop + step) + "px";
-        break;
-      case "ArrowLeft":
-        if (event.key === "ArrowLeft" && event.key === "ArrowUp") {
-          $box.style.left = Math.max($boxLeft - step, 0) + "px";
-          $box.style.top = Math.max($boxTop - step, 0) + "px";
+// char의 z-index가 safeArea보다 높다면 delete element.
 
+export function clear() {
+  if (true) {
+    let $redBoxCoor = $redBox.getBoundingClientRect();
+    let $redBoxXCoor = Math.floor($redBoxCoor.x);
+    console.log($redBoxXCoor);
+
+    if ($redBoxXCoor > $clear - 23) {
+      // 23은 디테일, 끝내는 함수
+      console.log(`dddd`);
+
+      $game.innerHTML = "";
+      window.location.href =
+        "http://127.0.0.1:5500/hardestgame/html/subPage.html";
+      return;
+    }
+  }
+}
+
+
+
+// 충돌 애니메이션 1
+let isitColliding = false; // 충돌 감지 변수
+let isAnimating = false; // 애니메이션 중인지 여부 변수
+
+window.addEventListener("keydown", function (event) {
+  if (!isitColliding) {
+    // 충돌이 발생하지 않았을 때만 키 이벤트 처리
+    keys[event.key] = true;
+  }
+});
+
+window.addEventListener("keyup", function (event) {
+  if (!isitColliding) {
+    // 충돌이 발생하지 않았을 때만 키 이벤트 처리
+    delete keys[event.key];
+  }
+});
+
+
+
+//키보드 입력 이벤트 및 벽 밖으로 나가지 못하게 하는 이벤트
+const $boxStyle = getComputedStyle($redBox);
+let x = parseInt($boxStyle.left);
+let y = parseInt($boxStyle.top);
+const boxSize = parseInt($boxStyle.width);
+const step = 5;
+
+let keys = {};
+
+function moveBox() {
+  if ("ArrowLeft" in keys) {
+    if (!checkCollision("left")) {
+      x = Math.max(x - step, 0);
+    }
+  }
+  if ("ArrowRight" in keys) {
+    if (!checkCollision("right")) {
+      x = Math.min(window.innerWidth - boxSize, x + step);
+    }
+  }
+  if ("ArrowUp" in keys) {
+    if (!checkCollision("up")) {
+      y = Math.max(y - step, 0);
+    }
+  }
+  if ("ArrowDown" in keys) {
+    if (!checkCollision("down")) {
+      y = Math.min(window.innerHeight - boxSize, y + step);
+    }
+  }
+
+  drawBox();
+  requestAnimationFrame(moveBox);
+}
+
+function drawBox() {
+  $redBox.style.left = x + "px";
+  $redBox.style.top = y + "px";
+}
+
+function checkCollision(direction) {
+  const $boxRect = $redBox.getBoundingClientRect();
+  const $obstacles = document.querySelectorAll(
+    ".leftborder, .rightborder, .topborder, .bottomborder"
+  );
+
+  let collision = false;
+
+  $obstacles.forEach(function ($obstacle) {
+    const obstacleRect = $obstacle.getBoundingClientRect();
+
+    switch (direction) {
+      case "left":
+        if (
+          $boxRect.left - 10 < obstacleRect.right &&
+          $boxRect.right > obstacleRect.right &&
+          $boxRect.top < obstacleRect.bottom &&
+          $boxRect.bottom > obstacleRect.top
+        ) {
+          collision = true;
         }
         break;
       case "up":
@@ -79,11 +153,11 @@ document.addEventListener("keydown", function (event) {
     }
   });
 
-
   return collision;
 }
 
 moveBox();
+
 
 
 //노란 공 충돌 이벤트
@@ -119,7 +193,6 @@ const intervalId = setInterval(function () {
   }
 }, 100);
 
-
 let deathCount = 0;
 
 
@@ -144,7 +217,8 @@ function detectCollision() {
         if (!isAnimating) {
           isAnimating = true;
           isitColliding = true; // 충돌 감지 상태로 변경
-
+          deathCount++;
+          $death.textContent = `DEATH: ${deathCount}`;
           // 1초 동안 키 입력 무시
           window.removeEventListener("keydown", function (event) {
             keys[event.key] = true;
@@ -152,14 +226,13 @@ function detectCollision() {
           window.removeEventListener("keyup", function (event) {
             delete keys[event.key];
           });
-
+          
           // 충돌 애니메이션 실행
           redboxDeadAnimation();
         }
       }
     });
   }
-
   
   // 충돌 감지 0.1초마다 실행
   setTimeout(detectCollision, 100);
@@ -181,7 +254,6 @@ function redboxDeadAnimation() {
       $redBox.style.opacity = opacity;
       requestAnimationFrame(opacityDecreasing);
     } else {
-
       // 1초가 지나면 애니메이션 종료 후 리스폰
       redboxRespawn();
     }
@@ -223,7 +295,6 @@ function redboxRespawn() {
 
   console.log("리스폰 완료.");
 }
-
 
 // 0.1초마다 충돌 감지 함수 실행
 setInterval(detectCollision, 100);
