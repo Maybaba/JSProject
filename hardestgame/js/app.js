@@ -1,10 +1,12 @@
 import { $game, $redBox, $eatCircle1, $clear, $avoid, $death } from "./getDom.js";
+import { detectCollision } from "./collideByYJ.js";
+import clear from "./makeFunction.js";
+
 
 // 게임 클리어 이벤트
 console.log(`$eatCircle1= ${{ $eatCircle1 }}`);
 // 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
 // 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
-//div 숫자 안보이게 하기 240410
 document.querySelectorAll('.backgroundInGame1').forEach(function(element) {
   element.textContent = ''; 
 });
@@ -14,48 +16,7 @@ document.querySelectorAll('.backgroundInGame2').forEach(function(element) {
 document.querySelectorAll('.number').forEach(function(element) {
   element.textContent = ''; 
 });
-
-
 // char의 z-index가 safeArea보다 높다면 delete element.
-
-export function clear() {
-  if (true) {
-    let $redBoxCoor = $redBox.getBoundingClientRect();
-    let $redBoxXCoor = Math.floor($redBoxCoor.x);
-    console.log($redBoxXCoor);
-
-    if ($redBoxXCoor > $clear - 23) {
-      // 23은 디테일, 끝내는 함수
-      console.log(`dddd`);
-
-      $game.innerHTML = "";
-      window.location.href =
-        "http://127.0.0.1:5500/hardestgame/html/subPage.html";
-      return;
-    }
-  }
-}
-
-
-
-// 충돌 애니메이션 1
-let isitColliding = false; // 충돌 감지 변수
-let isAnimating = false; // 애니메이션 중인지 여부 변수
-
-window.addEventListener("keydown", function (event) {
-  if (!isitColliding) {
-    // 충돌이 발생하지 않았을 때만 키 이벤트 처리
-    keys[event.key] = true;
-  }
-});
-
-window.addEventListener("keyup", function (event) {
-  if (!isitColliding) {
-    // 충돌이 발생하지 않았을 때만 키 이벤트 처리
-    delete keys[event.key];
-  }
-});
-
 
 
 //키보드 입력 이벤트 및 벽 밖으로 나가지 못하게 하는 이벤트
@@ -65,7 +26,7 @@ let y = parseInt($boxStyle.top);
 const boxSize = parseInt($boxStyle.width);
 const step = 5;
 
-let keys = {};
+export let keys = {};
 
 function moveBox() {
   if ("ArrowLeft" in keys) {
@@ -101,7 +62,7 @@ function drawBox() {
 function checkCollision(direction) {
   const $boxRect = $redBox.getBoundingClientRect();
   const $obstacles = document.querySelectorAll(
-    ".leftborder, .rightborder, .topborder, .bottomborder"
+    ".leftborder, .rightborder, .topborder, .bottomborder .leftLine, .rightLine, .topLine, .bottomLine"
   );
 
   let collision = false;
@@ -160,6 +121,7 @@ moveBox();
 
 
 
+
 //노란 공 충돌 이벤트
 function isColliding(rect1, rect2) {
   return !(
@@ -195,114 +157,10 @@ const intervalId = setInterval(function () {
 
 let deathCount = 0;
 
-
-
-// 파란공 충돌 애니메이션
-function detectCollision() {
-  //죽을 때마다 카운트 실행
-  $death.textContent = `DEATH: ${deathCount}`;
-  
-  //충돌하는 중이 아닐 경우
-  if (!isitColliding) {
-    const redBoxRect = $redBox.getBoundingClientRect();
-    $avoid.forEach(($avoid) => {
-      const avoidRect = $avoid.getBoundingClientRect();
-      
-      if (
-        !(
-          redBoxRect.right < avoidRect.left ||
-          redBoxRect.left > avoidRect.right ||
-          redBoxRect.bottom < avoidRect.top ||
-          redBoxRect.top > avoidRect.bottom
-        )
-      ) { //충돌애니메이션이 진행되지 않는 상황일 경우
-        //충돌애니메이션이 진행되기 전 충돌하고 있는 경우
-        if (!isAnimating) {
-          isAnimating = true;
-          isitColliding = true; // 충돌 감지 상태로 변경
-          deathCount++;
-          $death.textContent = `DEATH: ${deathCount}`;
-          // 1초 동안 키 입력 무시
-          window.removeEventListener("keydown", function (event) {
-            keys[event.key] = true;
-          });
-          window.removeEventListener("keyup", function (event) {
-            delete keys[event.key];
-          });
-          
-          // 충돌 애니메이션 실행
-          redboxDeadAnimation();
-        }
-      }
-    });
-  }
-  
-  // 충돌 감지 0.1초마다 실행
-  setTimeout(detectCollision, 100);
-}
-
-// 충돌 애니메이션 함수
-function redboxDeadAnimation() {
-  const redBoxCollide = $redBox.getBoundingClientRect();
-  const startTime = Date.now();
-
-  function opacityDecreasing() {
-    const currentTime = Date.now();
-    const elapsedTime = currentTime - startTime;
-
-    if (elapsedTime = )
-
-    if (elapsedTime < 1000) {
-      const opacity = 1 - elapsedTime / 1000;
-      $redBox.style.left = `${redBoxCollide.offsetLeft}px`;
-      $redBox.style.top = `${redBoxCollide.offsetTop}px`;
-      $redBox.style.opacity = opacity;
-      requestAnimationFrame(opacityDecreasing);
-    } else {
-      // 1초가 지나면 애니메이션 종료 후 리스폰
-      redboxRespawn();
-    }
-  }
-
-  opacityDecreasing();
-}
-
-// 리스폰 함수
-function redboxRespawn() {
-  const restartArea = document.querySelector(".start");
-  // red box를 다시 화면에 표시하기 전에 원래 위치로 되돌리기
-  // const restartArea = document.getElementById("safeArea");
-  // const parentRect = restartArea.parentElement.getBoundingClientRect();
-  const restartAreaRect = restartArea.getBoundingClientRect();
-  const redBoxX = restartAreaRect.left;
-  const redBoxY = restartAreaRect.top;
-  $redBox.style.left = `${redBoxX}px`;
-  $redBox.style.top = `${redBoxY}px`;
-
-  // red box 화면에 다시 표시
-  $redBox.style.display = "block";
-
-  //red box opacity 1로 되돌림
-  $redBox.style.opacity = 1;
-
-
-  // 충돌 감지 상태와 애니메이션 상태 초기화
-  isitColliding = false;
-  isAnimating = false;
-
-  // 키 이벤트 다시 등록, 기존 이벤트리스너 중복불가 - onkeydown
-  window.addEventListener("keydown", function (event) {
-    keys[event.key] = true;
-  });
-  window.addEventListener("keyup", function (event) {
-    delete keys[event.key];
-  });
-
-  console.log("리스폰 완료.");
-}
+// setInterval(detectCollision, 100);
 
 // 0.1초마다 충돌 감지 함수 실행
 setInterval(detectCollision, 100);
 
-//죽은 시점의 논리변수, 죽은 판정 시작위치로 이동하기 전에 setInterval 끝내기
+//죽은 시점의 논리변수, 죽은 판정 시작위치로  이동하기 전에 setInterval 끝내기
 
