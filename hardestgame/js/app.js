@@ -1,106 +1,49 @@
 
-import { $game, $redBox, $eatCircle1, $clear, $avoid, $death } from "./getDom.js";
+import { clear } from "./makeFunction.js";
+import { detectCollision } from "./collideByYJ.js";
+import { $redBox, $eatCircle1, $clear } from "./getDom.js";
+// import { intervalId } from './crush.js'
 
-// 게임 클리어 이벤트
-console.log(`$eatCircle1= ${{ $eatCircle1 }}`);
-// 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
-// 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
-
-// char의 z-index가 safeArea보다 높다면 delete element.
-
-export function clear() {
-
-  if (true) {
-    let $redBoxCoor = $redBox.getBoundingClientRect();
-    let $redBoxXCoor = Math.floor($redBoxCoor.x);
-    console.log($redBoxXCoor);
-
-    if ($redBoxXCoor > $clear - 23) {
-
-      console.log(`dddd`);
-
-      $game.innerHTML = "";
-      window.location.href =
-        "http://127.0.0.1:5500/hardestgame/html/subPage.html";
-      return;
-    }
-  }
-}
-
-
-
-
-// 충돌 애니메이션 1
-let isitColliding = false; // 충돌 감지 변수
-let isAnimating = false; // 애니메이션 중인지 여부 변수
-
-
-window.addEventListener("keydown", function (event) {
-  if (!isitColliding) {
-    // 충돌이 발생하지 않았을 때만 키 이벤트 처리
-    keys[event.key] = true;
-  }
+//div 숫자 안보이게 하기 240410
+document.querySelectorAll('.backgroundInGame1').forEach(function(element) {
+  element.textContent = ''; 
+});
+document.querySelectorAll('.backgroundInGame2').forEach(function(element) {
+  element.textContent = ''; 
+});
+document.querySelectorAll('.number').forEach(function(element) {
+  element.textContent = ''; 
 });
 
-window.addEventListener("keyup", function (event) {
-  if (!isitColliding) {
-    // 충돌이 발생하지 않았을 때만 키 이벤트 처리
-    delete keys[event.key];
-  }
-});
+document.addEventListener("keydown", function (event) {
+  const $box = document.querySelector(".box");
+  const $boxStyle = getComputedStyle($box);
+  const $boxLeft = parseInt($boxStyle.left);
+  const $boxTop = parseInt($boxStyle.top);
+  const $boxWidth = parseInt($boxStyle.width);
+  const $boxHeight = parseInt($boxStyle.height);
+  const step = 15;
 
+    switch (event.key) {
+      case "ArrowLeft":
+        $box.style.left = Math.max($boxLeft - step, 0) + "px";  
+        break;
+      case "ArrowUp":
+        $box.style.top = Math.max($boxTop - step, 0) + "px";
+        break;
+      case "ArrowRight":
+        $box.style.left =
+          Math.min(window.innerWidth - $boxWidth, $boxLeft + step) + "px";
+        break;
+      case "ArrowDown":
+        $box.style.top =
+          Math.min(window.innerHeight - $boxHeight, $boxTop + step) + "px";
+        break;
+      case "ArrowLeft":
+        if (event.key === "ArrowLeft" && event.key === "ArrowUp") {
+          $box.style.left = Math.max($boxLeft - step, 0) + "px";
+          $box.style.top = Math.max($boxTop - step, 0) + "px";
 
-function moveBox() {
-  if ("ArrowLeft" in keys) {
-    if (!checkCollision("left")) {
-      x = Math.max(x - step, 0);
-    }
-  }
-  if ("ArrowRight" in keys) {
-    if (!checkCollision("right")) {
-      x = Math.min(window.innerWidth - boxSize, x + step);
-    }
-  }
-  if ("ArrowUp" in keys) {
-    if (!checkCollision("up")) {
-      y = Math.max(y - step, 0);
-    }
-  }
-  if ("ArrowDown" in keys) {
-    if (!checkCollision("down")) {
-      y = Math.min(window.innerHeight - boxSize, y + step);
-    }
-  }
-
-  drawBox();
-  requestAnimationFrame(moveBox);
-}
-
-function drawBox() {
-  $redBox.style.left = x + "px";
-  $redBox.style.top = y + "px";
-}
-
-function checkCollision(direction) {
-  const $boxRect = $redBox.getBoundingClientRect();
-  const $obstacles = document.querySelectorAll(
-    ".leftborder, .rightborder, .topborder, .bottomborder"
-  );
-
-  let collision = false;
-
-  $obstacles.forEach(function ($obstacle) {
-    const obstacleRect = $obstacle.getBoundingClientRect();
-
-    switch (direction) {
-      case "left":
-        if (
-          $boxRect.left - 10 < obstacleRect.right &&
-          $boxRect.right > obstacleRect.right &&
-          $boxRect.top < obstacleRect.bottom &&
-          $boxRect.bottom > obstacleRect.top
-        ) {
-          collision = true;
         }
         break;
       case "up":
@@ -280,6 +223,7 @@ function redboxRespawn() {
 
   console.log("리스폰 완료.");
 }
+
 
 // 0.1초마다 충돌 감지 함수 실행
 setInterval(detectCollision, 100);
