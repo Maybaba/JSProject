@@ -81,7 +81,6 @@ document.addEventListener("keydown", function (event) {
 
 
   return collision;
-}
 
 moveBox();
 
