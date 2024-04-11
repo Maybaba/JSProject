@@ -1,10 +1,10 @@
-
+import { $redBox, $eatCircle1, $hiddenClear, $clear, } from "./getDom.js";
 import { hiddenClear } from "./hiddenClear.js";
 import { detectCollision } from "./collideByYJ.js";
 import clear from "./makeFunction.js";
 
 
-
+$hiddenClear.addEventListener('click', hiddenClear)
 // 게임 클리어 이벤트
 console.log(`$eatCircle1= ${{ $eatCircle1 }}`);
 // 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
@@ -147,7 +147,7 @@ const intervalId = setInterval(function () {
   }
 }, 100);
 
-let deathCount = 0;
+
 
 
 // setInterval(detectCollision, 100);

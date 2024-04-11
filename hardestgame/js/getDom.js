@@ -17,11 +17,11 @@ const $clearZone = document.querySelector(".clearZone");
 // 클리어존의 x(가로)좌표 값을 변수에 담는 과정
 const $clearZoneCoor = $clearZone.getBoundingClientRect();
 const $clear = $clearZoneCoor.x;
+const $hiddenClear = document.querySelector('.land')
 
 
-
-// 죽음 횟수 누적
+// 죽음 횟수 누ar적
 const $death = document.querySelector('.deaths') 
 
-export { $avoid, $redBox, $game, $clearZone, $clearZoneCoor, $clear, $eatCircle1, $death };
+export { $avoid, $redBox, $game, $hiddenClear, $clearZone, $clearZoneCoor, $clear, $eatCircle1, $death };
 

@@ -16,7 +16,7 @@ export const totalDeathObject = {
   totalDeath: null,
 };
 
-let deathCount;
+let deathCount = 0;
 
 // 충돌 애니메이션 충돌중복감지
 let isitColliding = false; // 충돌 감지 변수
