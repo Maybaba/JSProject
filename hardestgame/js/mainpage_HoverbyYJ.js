@@ -1,3 +1,4 @@
+const $start = document.querySelector('.a-playGame')
 
   //게임시작, 나가기 버튼 
   const playGame = document.getElementById('playGame');
@@ -19,3 +20,9 @@
   exit.addEventListener('mouseout', function() {
     document.querySelector('.redbox-anime .second').style.opacity =0;
   });
+
+  function startGame() {
+    window.location.href= "http://127.0.0.1:5500/hardestgame/html/kibeom.html"
+  }
+  $start.addEventListener('click', startGame)
+
