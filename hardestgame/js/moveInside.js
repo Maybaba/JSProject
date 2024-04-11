@@ -17,7 +17,7 @@ const $box = document.querySelector(".box");
         delete keys[event.key];
     });
 
-    function moveBox() {
+     function moveBox() {
         if ('ArrowLeft' in keys) {
             if (!checkCollision("left")) {
                 x = Math.max(x - step, 0);
