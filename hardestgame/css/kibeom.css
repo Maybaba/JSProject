@@ -48,8 +48,12 @@ body {
   position: absolute;
   top: 48%;
   left: 7.5%;
+  transition: 80ms linear;
 }
-
+.startArea {
+  top: 48%;
+  left: 7.5%;
+}
 
 
 .avoidCircle {
@@ -115,6 +119,7 @@ body {
 
 .bottomborder {
   border-bottom: 5px solid #000;
+  
 }
 .leftborder {
   border-left: 5px solid #000;
@@ -301,6 +306,7 @@ body .countbox{
 .top .menu {
   font-size: 40px;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 .top .round {
@@ -322,12 +328,12 @@ body .countbox{
 .bottom .more {
   font-size: 30px;
   padding-left: 10px;
-  
+  cursor: pointer;
 }
 .bottom .land {
   font-size: 35px;
   padding-right: 10px;
-  
+  cursor: pointer;
 }
 
 .main {
