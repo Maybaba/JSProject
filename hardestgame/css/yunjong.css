@@ -5,7 +5,7 @@
   /* background: green; */
 }
 
-/* 게임 배경 */
+/* 게임 배경 app.js에 맞게 bottomborder 아이디 선택 수정필요*/
 
 .game .delete {
   background: #b4b5fe;
