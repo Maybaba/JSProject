@@ -3,19 +3,12 @@ import { detectCollision } from "./collideByYJ.js";
 import clear from "./makeFunction.js";
 
 
+
 // 게임 클리어 이벤트
 console.log(`$eatCircle1= ${{ $eatCircle1 }}`);
 // 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
 // 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
-document.querySelectorAll('.backgroundInGame1').forEach(function(element) {
-  element.textContent = ''; 
-});
-document.querySelectorAll('.backgroundInGame2').forEach(function(element) {
-  element.textContent = ''; 
-});
-document.querySelectorAll('.number').forEach(function(element) {
-  element.textContent = ''; 
-});
+
 // char의 z-index가 safeArea보다 높다면 delete element.
 
 

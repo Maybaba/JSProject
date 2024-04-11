@@ -1,6 +1,17 @@
 
 import { $game, $redBox, $eatCircle1, $clear, $avoid, $death } from "./getDom.js";
 import {keys} from "./app.js";
+
+document.querySelectorAll('.backgroundInGame1').forEach(function(element) {
+  element.textContent = ''; 
+});
+document.querySelectorAll('.backgroundInGame2').forEach(function(element) {
+  element.textContent = ''; 
+});
+document.querySelectorAll('.number').forEach(function(element) {
+  element.textContent = ''; 
+});
+
 export const totalDeathObject = {
   totalDeath: null,
 };
@@ -97,8 +108,10 @@ function redboxRespawn() {
   const restartArea = document.querySelector(".start");
   // const parentRect = restartArea.parentElement.getBoundingClientRect();
   const restartAreaRect = restartArea.getBoundingClientRect();
+  console.log(restartAreaRect);
   const redBoxX = restartAreaRect.left;
   const redBoxY = restartAreaRect.top;
+
 
   $redBox.style.left = `${redBoxX}px`;
   $redBox.style.top = `${redBoxY}px`;
