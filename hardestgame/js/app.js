@@ -2,13 +2,20 @@ import { $redBox, $eatCircle1, $avoid, $hiddenClear, $clear, $death } from "./ge
 import { hiddenClear } from "./hiddenClear.js";
 import clear from "./makeFunction.js";
 
-//
-
 let deathCount = 0;
 $death.textContent = `DEATH: ${deathCount}`;
 
 
 $hiddenClear.addEventListener('click', hiddenClear);
+
+document.addEventListener('keydown', function(event) {
+  keys[event.key] = true;
+});
+
+document.addEventListener('keyup', function(event) {
+  delete keys[event.key];
+});
+
 
 const $boxStyle = getComputedStyle($redBox);
 let x = parseInt($boxStyle.left);
