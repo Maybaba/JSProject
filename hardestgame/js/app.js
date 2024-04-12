@@ -16,19 +16,22 @@ const boxSize = parseInt($boxStyle.width);
 const step = 5;
 
 export let keys = {};
+let canMove = true; // 키보드 이벤트 활성/비활성 여부
 
 function moveBox() {
-  if ("ArrowLeft" in keys && !checkCollision("left")) {
-    x = Math.max(x - step, 0);
-  }
-  if ("ArrowRight" in keys && !checkCollision("right")) {
-    x = Math.min(window.innerWidth - boxSize, x + step);
-  }
-  if ("ArrowUp" in keys && !checkCollision("up")) {
-    y = Math.max(y - step, 0);
-  }
-  if ("ArrowDown" in keys && !checkCollision("down")) {
-    y = Math.min(window.innerHeight - boxSize, y + step);
+  if (canMove) { // 키보드 이벤트가 활성화된 경우에만 움직임
+    if ("ArrowLeft" in keys && !checkCollision("left")) {
+      x = Math.max(x - step, 0);
+    }
+    if ("ArrowRight" in keys && !checkCollision("right")) {
+      x = Math.min(window.innerWidth - boxSize, x + step);
+    }
+    if ("ArrowUp" in keys && !checkCollision("up")) {
+      y = Math.max(y - step, 0);
+    }
+    if ("ArrowDown" in keys && !checkCollision("down")) {
+      y = Math.min(window.innerHeight - boxSize, y + step);
+    }
   }
 
   drawBox();
@@ -134,26 +137,28 @@ const intervalId = setInterval(function () {
   Array.from($avoid).forEach((circle) => {
     const circleRect = circle.getBoundingClientRect();
     if (isColliding(redBoxRect, circleRect)) {
-      
-      // 충돌 발생 시 빨간 상자를 멈추고 opacity를 0으로 조절하는 애니메이션 추가
-      
- 
 
+
+      // 충돌 발생 시 빨간 상자를 멈추고 opacity를 0으로 조절하는 애니메이션 추가
       $redBox.style.transition = "opacity 1s";
       $redBox.style.opacity = 0;
+
+      // 1초 동안 키보드 이벤트 비활성화
+      canMove = false;
       
-
-
       // 1초 후에 재시작 위치로 돌아가는 함수 호출
       setTimeout(() => {
         resetRedBoxPosition();
-        
+
         // 충돌 후 노란공들을 다시 표시해주는 부분 추가
         Array.from($eatCircle1).forEach((circle) => {
           circle.style.display = "block";
         });
+
+        // 키보드 이벤트 활성화
+        canMove = true;
       }, 1000);
-      
+
     }
     
   });
@@ -170,10 +175,9 @@ const intervalId = setInterval(function () {
 
 function resetRedBoxPosition() {
   // 재시작 위치로 돌아가는 애니메이션 추가
-  
   $redBox.style.transition = "none"; // 애니메이션 초기화
   $redBox.style.opacity = 1; // opacity 초기화
-  
+
   x = initialX;
   y = initialY;
   drawBox();
