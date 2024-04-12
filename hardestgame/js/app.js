@@ -1,11 +1,11 @@
 import { $redBox, $eatCircle1, $avoid, $hiddenClear, $clear, $death } from "./getDom.js";
-import { hiddenClear } from "./hiddenClear.js";
+
 import { detectCollision } from "./collideByYJ.js";
 import clear from "./makeFunction.js";
 console.log($death);
 let deathCount = 0;
 $death.textContent = `DEATH: ${deathCount}`
-$hiddenClear.addEventListener('click', hiddenClear);
+
 
 const $boxStyle = getComputedStyle($redBox);
 let x = parseInt($boxStyle.left);
