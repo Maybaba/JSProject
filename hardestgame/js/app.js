@@ -1,46 +1,32 @@
-import { $redBox, $eatCircle1, $hiddenClear, $clear, } from "./getDom.js";
+import { $redBox, $eatCircle1, $avoid, $hiddenClear, $clear } from "./getDom.js";
 import { hiddenClear } from "./hiddenClear.js";
 import { detectCollision } from "./collideByYJ.js";
 import clear from "./makeFunction.js";
 
+$hiddenClear.addEventListener('click', hiddenClear);
 
-$hiddenClear.addEventListener('click', hiddenClear)
-// 게임 클리어 이벤트
-console.log(`$eatCircle1= ${{ $eatCircle1 }}`);
-// 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
-// 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
-
-// char의 z-index가 safeArea보다 높다면 delete element.
-
-//키보드 입력 이벤트 및 벽 밖으로 나가지 못하게 하는 이벤트
 const $boxStyle = getComputedStyle($redBox);
 let x = parseInt($boxStyle.left);
 let y = parseInt($boxStyle.top);
+const initialX = x;
+const initialY = y;
 const boxSize = parseInt($boxStyle.width);
 const step = 5;
 
 export let keys = {};
 
 function moveBox() {
-  if ("ArrowLeft" in keys) {
-    if (!checkCollision("left")) {
-      x = Math.max(x - step, 0);
-    }
+  if ("ArrowLeft" in keys && !checkCollision("left")) {
+    x = Math.max(x - step, 0);
   }
-  if ("ArrowRight" in keys) {
-    if (!checkCollision("right")) {
-      x = Math.min(window.innerWidth - boxSize, x + step);
-    }
+  if ("ArrowRight" in keys && !checkCollision("right")) {
+    x = Math.min(window.innerWidth - boxSize, x + step);
   }
-  if ("ArrowUp" in keys) {
-    if (!checkCollision("up")) {
-      y = Math.max(y - step, 0);
-    }
+  if ("ArrowUp" in keys && !checkCollision("up")) {
+    y = Math.max(y - step, 0);
   }
-  if ("ArrowDown" in keys) {
-    if (!checkCollision("down")) {
-      y = Math.min(window.innerHeight - boxSize, y + step);
-    }
+  if ("ArrowDown" in keys && !checkCollision("down")) {
+    y = Math.min(window.innerHeight - boxSize, y + step);
   }
 
   drawBox();
@@ -55,7 +41,7 @@ function drawBox() {
 function checkCollision(direction) {
   const $boxRect = $redBox.getBoundingClientRect();
   const $obstacles = document.querySelectorAll(
-    ".leftborder, .rightborder, .topborder, .bottomborder .leftLine, .rightLine, .topLine, .bottomLine"
+    ".leftborder, .rightborder, .topborder, .bottomborder, .leftLine, .rightLine, .topLine, .bottomLine"
   );
 
   let collision = false;
@@ -108,12 +94,10 @@ function checkCollision(direction) {
   });
 
   return collision;
+}
 
 moveBox();
 
-
-
-//노란 공 충돌 이벤트
 function isColliding(rect1, rect2) {
   return !(
     rect1.right < rect2.left ||
@@ -123,18 +107,26 @@ function isColliding(rect1, rect2) {
   );
 }
 
-// 노란 공 충돌 감지
 const intervalId = setInterval(function () {
   const redBoxRect = $redBox.getBoundingClientRect();
   let result = 0;
 
-  $eatCircle1.forEach((circle) => {
+  Array.from($eatCircle1).forEach((circle) => {
     const circleRect = circle.getBoundingClientRect();
     if (isColliding(redBoxRect, circleRect)) {
       circle.style.display = "none";
     }
     if (circle.style.display !== "none") {
       result++;
+    }
+  });
+
+  Array.from($avoid).forEach((circle) => {
+    const circleRect = circle.getBoundingClientRect();
+    if (isColliding(redBoxRect, circleRect)) {
+      x = initialX;
+      y = initialY;
+      drawBox();
     }
   });
 
@@ -145,13 +137,3 @@ const intervalId = setInterval(function () {
     clear();
   }
 }, 100);
-
-
-
-
-// setInterval(detectCollision, 100);
-
-// 0.1초마다 충돌 감지 함수 실행
-setInterval(detectCollision, 100);
-
-//죽은 시점의 논리변수, 죽은 판정 시작위치로  이동하기 전에 setInterval 끝내기
