@@ -1,7 +1,12 @@
-import { $redBox, $eatCircle1, $avoid, $hiddenClear, $clear } from "./getDom.js";
+import { $redBox, $eatCircle1, $avoid, $hiddenClear, $clear, $death } from "./getDom.js";
 import { hiddenClear } from "./hiddenClear.js";
-import { detectCollision } from "./collideByYJ.js";
 import clear from "./makeFunction.js";
+
+//
+
+let deathCount = 0;
+$death.textContent = `DEATH: ${deathCount}`;
+
 
 $hiddenClear.addEventListener('click', hiddenClear);
 
