@@ -127,6 +127,9 @@ const intervalId = setInterval(function () {
       x = initialX;
       y = initialY;
       drawBox();
+      Array.from($eatCircle1).forEach((circle) => {
+        circle.style.display = "block";
+      });
     }
   });
 
