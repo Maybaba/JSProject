@@ -2,7 +2,7 @@
 import { $redBox, $game, $clear, $eatCircle1 } from './getDom.js';
 
 
-console.log(`$eatCircle1= ${{$eatCircle1}}`);
+// console.log(`$eatCircle1= ${{$eatCircle1}}`);
 // 게임이 끝나려면 빨간박스의 x좌표값이 클리어존의 좌표값
 // 보다 커지면 끝난다. 빨간박스의 x좌표값을 변수에 담는다.
 
