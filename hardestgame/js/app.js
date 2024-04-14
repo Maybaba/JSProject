@@ -9,6 +9,17 @@ import {
 } from "./getDom.js";
 import {clear} from "./makeFunction.js";
 
+function clearText() {
+  var divs = document.querySelectorAll('.backgroundInGame1, .backgroundInGame2, .avoidCircle, .eatCircle, .box'); // 모든 클래스가 'backgroundInGame1' 또는 'backgroundInGame2'인 div 요소 선택
+  divs.forEach(function(div) {
+      div.textContent = ''; // 또는 div.innerText = '';
+  });
+}
+
+// 페이지 로드 후 호출할 함수
+window.onload = function() {
+  clearText(); // 페이지 로드 후 텍스트를 지우기 위해 호출
+};
 //키보드 입력 함수
 document.addEventListener("keydown", function (event) {
   keys[event.key] = true;
