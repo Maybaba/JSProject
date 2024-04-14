@@ -7,7 +7,16 @@ import {
   $death,
   $clearY,
 } from "./getDom.js";
-import clear from "./makeFunction.js";
+import {clear} from "./makeFunction.js";
+
+//키보드 입력 함수
+document.addEventListener("keydown", function (event) {
+  keys[event.key] = true;
+});
+
+document.addEventListener("keyup", function (event) {
+  delete keys[event.key];
+});
 
 const $boxStyle = getComputedStyle($redBox);
 let x = parseInt($boxStyle.left);
