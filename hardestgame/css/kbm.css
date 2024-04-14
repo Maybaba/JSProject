@@ -705,6 +705,8 @@ body .countbox{
 .top .round {
   font-size: 30px;
   padding-left: 50px;
+  position: absolute;
+  right: 10px;
   
 }
 .top .deaths {

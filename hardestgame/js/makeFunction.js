@@ -1,5 +1,5 @@
 
-import { $redBox, $game, $clear, $eatCircle1 } from './getDom.js';
+import { $redBox, $game, $clear, $eatCircle1, $clearY } from './getDom.js';
 
 
 // console.log(`$eatCircle1= ${{$eatCircle1}}`);
@@ -8,31 +8,35 @@ import { $redBox, $game, $clear, $eatCircle1 } from './getDom.js';
 
 
 // char의 z-index가 safeArea보다 높다면 delete element.
-
-
 export function clear() {
-
-
-
-
-  if (true) {
+  if (
+    window.location.href ===
+    "http://127.0.0.1:5500/hardestgame/html/yunjong.html"
+  ) {
+    let $redBoxCoor = $redBox.getBoundingClientRect();
+    let $redBoxXCoor = Math.floor($redBoxCoor.x);
+    let $redBoxYCoor = Math.floor($redBoxCoor.y)
+    if ($redBoxXCoor > $clear - 23 || $redBoxYCoor > $clearY) {
+      $game.innerHTML = "";
+      window.location.href = "http://127.0.0.1:5500/hardestgame/html/subPage3.html";
+      return;
+    }
+  } else {
     let $redBoxCoor = $redBox.getBoundingClientRect();
     let $redBoxXCoor = Math.floor($redBoxCoor.x);
     console.log($redBoxXCoor);
 
-    if ($redBoxXCoor > $clear - 23) { // 23은 디테일, 끝내는 함수
-      
+    if ($redBoxXCoor > $clear - 23) {
+      // 23은 디테일, 끝내는 함수
 
-    $game.innerHTML = '';
-    window.location.href = "http://127.0.0.1:5500/hardestgame/html/subPage.html";
-    
-    return;
+      $game.innerHTML = "";
+      window.location.href =
+        "http://127.0.0.1:5500/hardestgame/html/subPage.html";
+
+      return;
     }
   }
 }
 
-
-
-export default clear;
 
 
