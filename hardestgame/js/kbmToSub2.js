@@ -7,4 +7,4 @@ function nextLevel() {
 
 
 
-$hiddenClear.addEventListener('click', nextLevel)
+$hiddenClear.addEventListener('click', nextLevel);
