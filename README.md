@@ -2,7 +2,7 @@
 
 ### Project Name : development chronicle
 
-게임 하러 가기 : https://maybaba.github.io/
+게임 하러 가기 : https://junwon-hwang.github.io/
 
 <br>
 
